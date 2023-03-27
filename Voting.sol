@@ -34,6 +34,8 @@ contract Voting {
     mapping(uint256 => Candidate) public candidates;
     VoterVerification public voterVerification;
 
+    uint256 numCandidates = 0; 
+
     constructor(address verificationAddress) {
         voterVerification = VoterVerification(verificationAddress);
     }
@@ -41,6 +43,12 @@ contract Voting {
     function setCandidates(string memory candidate1, string memory candidate2) public {
         candidates[0] = Candidate(candidate1, 0);
         candidates[1] = Candidate(candidate2, 0);
+        numCandidates +=2;
+    }
+
+    function addCandidate(string memory candidate) public{
+        candidates[numCandidates] = Candidate(candidate, 0); 
+        numCandidates += 1; 
     }
 
     function vote(uint candidateIndex, bytes memory zkProof) public {
