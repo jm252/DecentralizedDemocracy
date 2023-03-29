@@ -15,7 +15,7 @@ contract VoterVerification {
     function generateZkProof(string memory name, string memory driversLicense, string memory 
     socialSecurity) internal pure returns(bytes memory) {
         // Add ZK proof generation logic here
-        // For the sake of this example, concatenate the three input strings and return the result
+        // For the sake example, concatenate the three input strings and return the result
         string memory input = string(abi.encodePacked(name, driversLicense, socialSecurity));
         return bytes(input);
     }
